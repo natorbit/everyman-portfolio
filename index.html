@@ -35,6 +35,7 @@
       font-weight: 500;
     }
 
+    /* Hero Section */
     .hero {
       padding: 80px 20px;
       text-align: center;
@@ -49,13 +50,28 @@
     }
 
     .hero-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #4a90e2;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #4a90e2;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    @media(min-width: 768px) {
+      .hero-content {
+        flex-direction: row;
+        text-align: left;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .hero-photo:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      }
+    }
 
     .hero-text h1 {
       font-size: 2.2rem;
@@ -78,26 +94,67 @@
       font-size: 1rem;
       cursor: pointer;
       font-weight: 600;
+      transition: background 0.3s ease;
     }
 
-    /* Desktop layout: image on left, text on right */
+    .hero-button:hover {
+      background: #357ABD;
+    }
+
+    /* Persuasion Section */
+    #persuasion {
+      padding:60px 40px;
+      background:#f9f9f9;
+      text-align:center;
+    }
+
+    #persuasion h2 {
+      margin-bottom:40px;
+      font-size:2rem;
+      color:#333;
+    }
+
+    .principles {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .principle {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      max-width: 300px;
+    }
+
+    .principle h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #4a90e2;
+    }
+
+    .principle p {
+      font-size: 1.05rem;
+      color: #555;
+    }
+
     @media(min-width: 768px) {
-      .hero-content {
+      .principles {
         flex-direction: row;
-        text-align: left;
         justify-content: center;
-        align-items: center;
         gap: 40px;
       }
-      .hero-photo:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  }
-  .card img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+      .principle:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      }
     }
-    }
+
+    /* Projects Section */
     .projects {
       padding: 60px 40px;
       display: grid;
@@ -111,6 +168,7 @@
       padding: 20px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .card img {
@@ -120,13 +178,19 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #666;
-      font-size: 0.9rem;
+    @media(min-width: 768px) {
+      .card img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      }
     }
 
+    /* Contact Section */
     #contact {
       padding:60px 40px;
       background:white;
@@ -138,7 +202,7 @@
       border-radius:10px; 
       background:#fafafa; 
       max-width:400px; 
-      margin-top:20px;
+      margin-top:20px auto;
     }
 
     #contact input, #contact textarea {
@@ -154,7 +218,20 @@
       border:none; 
       border-radius:6px; 
       cursor:pointer;
+      transition: background 0.3s ease;
     }
+
+    #contact button:hover {
+      background:#555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
   </style>
 </head>
 <body>
@@ -162,12 +239,13 @@
 <header>
   <div class="logo">Natasha Caraos</div>
   <nav>
+    <a href="#persuasion">Why Work With Me</a>
     <a href="#projects">Work</a>
-    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
+<!-- Hero Section -->
 <section class="hero">
   <div class="hero-content">
     <img src="images/ariiwanas.jpg" alt="Natasha Caraos" class="hero-photo">
@@ -181,16 +259,41 @@
   </div>
 </section>
 
+<!-- Persuasion Section -->
+<section id="persuasion">
+  <h2>Why Work With Me</h2>
+  <div class="principles">
+    <div class="principle">
+      <h3>Reciprocity</h3>
+      <p>Book a <strong>free audit or consultation</strong> to get personalized advice for your project.</p>
+    </div>
+    <div class="principle">
+      <h3>Scarcity</h3>
+      <p>Availability is <strong>limited</strong> each month — secure your spot now!</p>
+    </div>
+    <div class="principle">
+      <h3>Authority</h3>
+      <p>Check out my <strong>case studies and client testimonials</strong> to see my design expertise in action.</p>
+    </div>
+    <div class="principle">
+      <h3>Social Proof</h3>
+      <p>Trusted by <strong>10+ startups and growing brands</strong> to craft human-centered design solutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
 <section id="projects" class="projects">
   <a href="https://www.figma.com/make/N5yei6IsZYgO7TcbFUuKYx/Garden-Relaxation-Experience?node-id=0-1&t=qAliqofu4XlsGhqi-1" target="_blank" style="text-decoration:none; color:inherit;">
     <div class="card">
-      <img src="https://via.placeholder.com/400x250" alt="Garden Relaxation Experience Preview">
+      <img src="images/flower.jpg" alt="Garden Relaxation Experience Preview">
       <h3>Garden Relaxation Experience</h3>
       <p>A calming, nature-inspired interaction design prototype built in Figma.</p>
     </div>
   </a>
 </section>
 
+<!-- Contact Section -->
 <section id="contact">
   <h2>Contact Me</h2>
   <form action="https://hooks.zapier.com/hooks/catch/25585130/ukc09zi/" method="POST">

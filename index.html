@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Everyman Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: white;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .hero {
+      padding: 80px 40px;
+      text-align: center;
+      background: white;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #555;
+    }
+    .projects {
+      padding: 60px 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Natasha Caraos</div>
+  <nav>
+    <a href="#projects">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <button onclick="Calendly.initPopupWidget({ url: 'https://calendly.com/YOUR-USERNAME/free-consultation' }); return false;" style="margin-top:20px; padding:14px 26px; background:#4a90e2; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer; font-weight:600;">
+    Book a Free Call
+  </button>
+  <h1>Hi, I'm a Designer</h1>
+  <p>I create simple, friendly, human-centered work. Here's a collection of the things I've built and designed.</p>
+</section>
+
+<section id="projects" class="projects">
+  <a href="https://www.figma.com/make/N5yei6IsZYgO7TcbFUuKYx/Garden-Relaxation-Experience?node-id=0-1&t=qAliqofu4XlsGhqi-1" 
+     target="_blank" 
+     style="text-decoration:none; color:inherit;">
+    
+    <div class="card">
+      <img src="https://via.placeholder.com/400x250" alt="Garden Relaxation Experience Preview">
+      <h3>Garden Relaxation Experience</h3>
+      <p>A calming, nature-inspired interaction design prototype built in Figma.</p>
+    </div>
+
+  </a>
+</section>
+
+<footer>
+  © 2025 Natasha Caraos — Made with a clean, simple, everyman style
+</footer>
+
+<!-- Calendly Embed -->
+<div style="display:none" id="calendly-container">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script>
+    Calendly.initPopupWidget({ url: 'https://calendly.com/natcaraos27/new-meeting' });
+  </script>
+</div>
+
+<!-- Simple Contact Form with Zapier Webhook -->
+<section id="contact" style="padding:60px 40px; background:white;">
+  <h2>Contact Me</h2>
+  <form style="border:1px solid #e0e0e0; padding:20px; border-radius:10px; background:#fafafa;" action="https://hooks.zapier.com/hooks/catch/25585130/ukc09zi/" method="POST" style="max-width:400px; margin-top:20px;">
+    <input type="text" name="name" placeholder="Your Name" style="width:100%; padding:12px; margin-bottom:12px;">
+    <input type="email" name="email" placeholder="Your Email" style="width:100%; padding:12px; margin-bottom:12px;">
+    <textarea name="message" placeholder="Your Message" style="width:100%; padding:12px; margin-bottom:12px; height:120px;"></textarea>
+    <button type="submit" style="padding:12px 20px; background:#333; color:white; border:none; border-radius:6px; cursor:pointer;">Send Message</button>
+  </form>
+</section>
+
+<!-- Analytics (Google Analytics Example) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GMPRPFSNLS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YOUR-ID');
+</script>
+
+</body>
+</html>

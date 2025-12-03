@@ -14,6 +14,7 @@
       color: #333;
     }
 
+    /* Header & Navigation */
     header {
       display: flex;
       justify-content: space-between;
@@ -21,6 +22,7 @@
       padding: 20px 40px;
       background: white;
       border-bottom: 1px solid #e0e0e0;
+      position: relative;
     }
 
     .logo {
@@ -28,11 +30,38 @@
       font-weight: bold;
     }
 
-    nav a {
-      margin-left: 20px;
+    nav {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
+    }
+
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+      transition: 0.3s;
     }
 
     /* Hero Section */
@@ -165,25 +194,24 @@
     .card {
       background: white;
       border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      overflow: hidden;
       text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .card img {
       width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
+      display: block;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    @media(min-width: 768px) {
-      .card img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      }
+    .card:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
 
+    @media(min-width: 768px) {
       .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 12px 25px rgba(0,0,0,0.15);
@@ -202,7 +230,7 @@
       border-radius:10px; 
       background:#fafafa; 
       max-width:400px; 
-      margin-top:20px auto;
+      margin:20px auto 0;
     }
 
     #contact input, #contact textarea {
@@ -232,6 +260,46 @@
       font-size: 0.9rem;
     }
 
+    /* Mobile Styles for Hamburger */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        border-radius: 8px;
+      }
+
+      .nav-links li {
+        margin-bottom: 15px;
+      }
+
+      .nav-links.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -239,9 +307,16 @@
 <header>
   <div class="logo">Natasha Caraos</div>
   <nav>
-    <a href="#persuasion">Why Work With Me</a>
-    <a href="#projects">Work</a>
-    <a href="#contact">Contact</a>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#persuasion">Why Work With Me</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
 </header>
 
@@ -307,6 +382,17 @@
 <footer>
   © 2025 Natasha Caraos — Made with a clean, simple, everyman style
 </footer>
+
+<!-- Hamburger Script -->
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('open');
+  });
+</script>
 
 <!-- Google Analytics Example -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GMPRPFSNLS"></script>

@@ -4,43 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Everyman Portfolio</title>
+
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
   <style>
+    /* ------------------------------------------------------------
+       GLOBAL FIXES
+    ------------------------------------------------------------ */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f5f5f5;
       color: #333;
+      overflow-x: hidden; /* FIX: NO MORE HORIZONTAL SCROLL */
+    }
+
+    img {
+      max-width: 100%; 
+      display: block;
     }
 
     /* ------------------------------------------------------------
-       HEADER (FLAT DESIGN + COLOR)
+       HEADER (FLAT DESIGN + BLUE BAR + MOBILE MENU FIXES)
     ------------------------------------------------------------ */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 18px 40px;
-      background: #4a90e2; /* Flat soft blue */
+      background: #4a90e2; 
       color: white;
       position: sticky;
       top: 0;
       width: 100%;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .logo {
       font-size: 1.4rem;
       font-weight: bold;
-      color: white;
     }
 
     nav {
+      position: relative;
       display: flex;
       align-items: center;
-      position: relative;
     }
 
     .nav-links {
@@ -53,7 +70,7 @@
       text-decoration: none;
       color: white;
       font-weight: 500;
-      padding: 6px 2px;
+      padding: 6px 0;
       transition: opacity 0.2s;
     }
 
@@ -77,7 +94,7 @@
       transition: 0.3s;
     }
 
-    /* Mobile Menu */
+    /* MOBILE MENU */
     @media (max-width: 768px) {
       .nav-links {
         position: absolute;
@@ -85,7 +102,7 @@
         right: 0;
         background: #4a90e2;
         flex-direction: column;
-        width: 200px;
+        width: 220px;
         padding: 20px;
         opacity: 0;
         pointer-events: none;
@@ -93,18 +110,9 @@
         border-radius: 0 0 8px 8px;
       }
 
-      .nav-links li {
-        margin-bottom: 15px;
-      }
-
-      .nav-links li a {
-        display: block;
-        padding: 10px 0;
-      }
-
       .nav-links.active {
         opacity: 1;
-        pointer-events: all;
+        pointer-events: auto;
       }
 
       .hamburger {
@@ -144,10 +152,10 @@
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #4a90e2;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.4s ease;
     }
 
-    @media(min-width: 768px) {
+    @media (min-width: 768px) {
       .hero-content {
         flex-direction: row;
         text-align: left;
@@ -181,7 +189,7 @@
       font-size: 1rem;
       cursor: pointer;
       font-weight: 600;
-      transition: 0.3s ease;
+      transition: 0.3s;
     }
 
     .hero-button:hover {
@@ -189,7 +197,7 @@
     }
 
     /* ------------------------------------------------------------
-       PERSUASION SECTION
+       WHY WORK WITH ME
     ------------------------------------------------------------ */
     #persuasion {
       padding: 60px 40px;
@@ -213,27 +221,28 @@
       background: white;
       padding: 20px;
       border-radius: 12px;
+      width: 100%;
       max-width: 300px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: 0.3s;
     }
 
     @media(min-width: 768px) {
       .principles {
         flex-direction: row;
-        gap: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
-      .principle:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      .principle {
+        flex: 1;
+        max-width: 260px;
       }
     }
 
     /* ------------------------------------------------------------
        PROJECTS
     ------------------------------------------------------------ */
-    .projects {
+    #projects {
       padding: 60px 40px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -249,11 +258,6 @@
       transition: 0.3s;
     }
 
-    .card img {
-      width: 100%;
-      display: block;
-    }
-
     @media(min-width: 768px) {
       .card:hover {
         transform: translateY(-5px);
@@ -262,7 +266,7 @@
     }
 
     /* ------------------------------------------------------------
-       CONTACT SECTION
+       CONTACT
     ------------------------------------------------------------ */
     #contact {
       padding: 60px 40px;
@@ -286,33 +290,6 @@
       font-size: 15px;
       border: 2px solid #e0e0e0;
       border-radius: 6px;
-      box-sizing: border-box;
-      outline: none;
-    }
-
-    .contact-container input:focus,
-    .contact-container textarea:focus {
-      border-color: #3D8AFE;
-    }
-
-    .contact-container textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .contact-container button {
-      background: #222;
-      color: white;
-      padding: 12px 26px;
-      border: none;
-      font-size: 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .contact-container button:hover {
-      background: #000;
     }
 
     /* ------------------------------------------------------------
@@ -334,9 +311,7 @@
   <div class="logo">Natasha Caraos</div>
   <nav>
     <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
 
     <ul class="nav-links" id="nav-links">
@@ -347,7 +322,7 @@
   </nav>
 </header>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <img src="images/ariiwanas.jpg" alt="Natasha Caraos" class="hero-photo">
@@ -361,7 +336,7 @@
   </div>
 </section>
 
-<!-- WHY WORK WITH ME -->
+<!-- PERSUASION -->
 <section id="persuasion">
   <h2>Why Work With Me</h2>
   <div class="principles">
@@ -369,28 +344,31 @@
       <h3>Reciprocity</h3>
       <p>Book a <strong>free audit or consultation</strong> to get personalized advice for your project.</p>
     </div>
+
     <div class="principle">
       <h3>Scarcity</h3>
       <p>Availability is <strong>limited</strong> each month — secure your spot now!</p>
     </div>
+
     <div class="principle">
       <h3>Authority</h3>
-      <p>Check out my <strong>case studies and client testimonials</strong> to see my design expertise in action.</p>
+      <p>Check out my <strong>case studies and client testimonials</strong>.</p>
     </div>
+
     <div class="principle">
       <h3>Social Proof</h3>
-      <p>Trusted by <strong>10+ startups and growing brands</strong> for human-centered design.</p>
+      <p>Trusted by <strong>10+ startups and growing brands</strong>.</p>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="projects">
-  <a href="https://www.figma.com/make/N5yei6IsZYgO7TcbFUuKYx/Garden-Relaxation-Experience?node-id=0-1&t=qAliqofu4XlsGhqi-1" target="_blank" style="text-decoration:none; color:inherit;">
+<section id="projects">
+  <a href="https://www.figma.com/make/N5yei6IsZYgO7TcbFUuKYx/Garden-Relaxation-Experience?node-id=0-1&t=qAliqofu4XlsGhqi-1" target="_blank" style="text-decoration:none;color:inherit;">
     <div class="card">
-      <img src="images/flower.jpg" alt="Garden Relaxation Experience Preview">
+      <img src="images/flower.jpg" alt="Garden Relaxation Experience">
       <h3>Garden Relaxation Experience</h3>
-      <p>A calming, nature-inspired interaction design prototype built in Figma.</p>
+      <p>A calming, nature-inspired interaction design prototype.</p>
     </div>
   </a>
 </section>
@@ -412,10 +390,10 @@
 
 <!-- FOOTER -->
 <footer>
-  © 2025 Natasha Caraos — Made with a clean, simple, everyman style
+  © 2025 Natasha Caraos — Built with clean, simple, everyman design
 </footer>
 
-<!-- Hamburger Script -->
+<!-- MENU SCRIPT -->
 <script>
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
@@ -424,15 +402,6 @@
     navLinks.classList.toggle('active');
     hamburger.classList.toggle('open');
   });
-</script>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GMPRPFSNLS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GMPRPFSNLS');
 </script>
 
 </body>

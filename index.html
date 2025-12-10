@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,6 +6,7 @@
   <title>Everyman Portfolio</title>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
   <style>
     body {
       margin: 0;
@@ -218,41 +219,59 @@
       }
     }
 
-    /* Contact Section */
+    /* NEW Contact Section — Fully Fixed */
     #contact {
       padding:60px 40px;
       background:white;
     }
 
-    #contact form {
-      border:1px solid #e0e0e0; 
-      padding:20px; 
-      border-radius:10px; 
-      background:#fafafa; 
-      max-width:400px; 
-      margin:20px auto 0;
+    .contact-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     }
 
-    #contact input, #contact textarea {
-      width:100%; 
-      padding:12px; 
-      margin-bottom:12px;
+    .contact-container input,
+    .contact-container textarea {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      font-size: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      outline: none;
+      box-sizing: border-box;
     }
 
-    #contact button {
-      padding:12px 20px; 
-      background:#333; 
-      color:white; 
-      border:none; 
-      border-radius:6px; 
-      cursor:pointer;
+    .contact-container input:focus,
+    .contact-container textarea:focus {
+      border-color: #3D8AFE;
+    }
+
+    .contact-container textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-container button {
+      background: #222;
+      color: white;
+      padding: 12px 26px;
+      border: none;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
       transition: background 0.3s ease;
     }
 
-    #contact button:hover {
-      background:#555;
+    .contact-container button:hover {
+      background: #000;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 30px;
@@ -302,6 +321,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -371,12 +391,16 @@
 <!-- Contact Section -->
 <section id="contact">
   <h2>Contact Me</h2>
-  <form action="https://hooks.zapier.com/hooks/catch/25585130/ukc09zi/" method="POST">
-    <input type="text" name="name" placeholder="Your Name">
-    <input type="email" name="email" placeholder="Your Email">
-    <textarea name="message" placeholder="Your Message" style="height:120px;"></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+
+  <div class="contact-container">
+    <form action="https://hooks.zapier.com/hooks/catch/25585130/ukc09zi/" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
 </section>
 
 <footer>

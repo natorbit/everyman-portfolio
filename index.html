@@ -8,11 +8,6 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
   <style>
-    /* NEW — Smooth Scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -20,20 +15,26 @@
       color: #333;
     }
 
-    /* Header & Navigation */
+    /* ------------------------------------------------------------
+       HEADER (FLAT DESIGN + COLOR)
+    ------------------------------------------------------------ */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: white;
-      border-bottom: 1px solid #e0e0e0;
-      position: relative;
+      padding: 18px 40px;
+      background: #4a90e2; /* Flat soft blue */
+      color: white;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
     }
 
     .logo {
       font-size: 1.4rem;
       font-weight: bold;
+      color: white;
     }
 
     nav {
@@ -45,13 +46,19 @@
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 24px;
     }
 
     .nav-links li a {
       text-decoration: none;
-      color: #333;
+      color: white;
       font-weight: 500;
+      padding: 6px 2px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links li a:hover {
+      opacity: 0.7;
     }
 
     /* Hamburger button */
@@ -63,14 +70,61 @@
     }
 
     .hamburger span {
-      width: 25px;
+      width: 26px;
       height: 3px;
-      background: #333;
+      background: white;
       border-radius: 2px;
       transition: 0.3s;
     }
 
-    /* Hero Section */
+    /* Mobile Menu */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #4a90e2;
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        border-radius: 0 0 8px 8px;
+      }
+
+      .nav-links li {
+        margin-bottom: 15px;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 10px 0;
+      }
+
+      .nav-links.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+    }
+
+    /* ------------------------------------------------------------
+       HERO SECTION
+    ------------------------------------------------------------ */
     .hero {
       padding: 80px 20px;
       text-align: center;
@@ -98,13 +152,11 @@
         flex-direction: row;
         text-align: left;
         justify-content: center;
-        align-items: center;
         gap: 40px;
       }
 
       .hero-photo:hover {
         transform: scale(1.1);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
       }
     }
 
@@ -129,24 +181,25 @@
       font-size: 1rem;
       cursor: pointer;
       font-weight: 600;
-      transition: background 0.3s ease;
+      transition: 0.3s ease;
     }
 
     .hero-button:hover {
       background: #357ABD;
     }
 
-    /* Persuasion Section */
+    /* ------------------------------------------------------------
+       PERSUASION SECTION
+    ------------------------------------------------------------ */
     #persuasion {
-      padding:60px 40px;
-      background:#f9f9f9;
-      text-align:center;
+      padding: 60px 40px;
+      background: #f9f9f9;
+      text-align: center;
     }
 
     #persuasion h2 {
-      margin-bottom:40px;
-      font-size:2rem;
-      color:#333;
+      margin-bottom: 40px;
+      font-size: 2rem;
     }
 
     .principles {
@@ -160,36 +213,26 @@
       background: white;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
       max-width: 300px;
-    }
-
-    .principle h3 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: #4a90e2;
-    }
-
-    .principle p {
-      font-size: 1.05rem;
-      color: #555;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
 
     @media(min-width: 768px) {
       .principles {
         flex-direction: row;
-        justify-content: center;
         gap: 40px;
       }
 
       .principle:hover {
-        transform: translateY(-5px) scale(1.03);
-        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
       }
     }
 
-    /* Projects Section */
+    /* ------------------------------------------------------------
+       PROJECTS
+    ------------------------------------------------------------ */
     .projects {
       padding: 60px 40px;
       display: grid;
@@ -203,18 +246,12 @@
       overflow: hidden;
       text-align: center;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: 0.3s;
     }
 
     .card img {
       width: 100%;
       display: block;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
     @media(min-width: 768px) {
@@ -224,10 +261,12 @@
       }
     }
 
-    /* Contact Section */
+    /* ------------------------------------------------------------
+       CONTACT SECTION
+    ------------------------------------------------------------ */
     #contact {
-      padding:60px 40px;
-      background:white;
+      padding: 60px 40px;
+      background: white;
     }
 
     .contact-container {
@@ -247,8 +286,8 @@
       font-size: 15px;
       border: 2px solid #e0e0e0;
       border-radius: 6px;
-      outline: none;
       box-sizing: border-box;
+      outline: none;
     }
 
     .contact-container input:focus,
@@ -269,65 +308,28 @@
       font-size: 15px;
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: 0.3s;
     }
 
     .contact-container button:hover {
       background: #000;
     }
 
+    /* ------------------------------------------------------------
+       FOOTER
+    ------------------------------------------------------------ */
     footer {
       text-align: center;
       padding: 30px;
       color: #666;
       font-size: 0.9rem;
     }
-
-    /* Mobile Hamburger */
-    @media (max-width: 768px) {
-      .nav-links {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        width: 200px;
-        padding: 20px;
-        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        border-radius: 8px;
-      }
-
-      .nav-links li {
-        margin-bottom: 15px;
-      }
-
-      .nav-links.active {
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .hamburger.open span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-      .hamburger.open span:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger.open span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-      }
-    }
   </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="logo">Natasha Caraos</div>
   <nav>
@@ -336,15 +338,16 @@
       <span></span>
       <span></span>
     </div>
+
     <ul class="nav-links" id="nav-links">
-      <li><a href="#persuasion" class="scroll-link">Why Work With Me</a></li>
-      <li><a href="#projects" class="scroll-link">Work</a></li>
-      <li><a href="#contact" class="scroll-link">Contact</a></li>
+      <li><a href="#persuasion">Why Work With Me</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- Hero Section -->
+<!-- HERO SECTION -->
 <section class="hero">
   <div class="hero-content">
     <img src="images/ariiwanas.jpg" alt="Natasha Caraos" class="hero-photo">
@@ -358,7 +361,7 @@
   </div>
 </section>
 
-<!-- Persuasion Section -->
+<!-- WHY WORK WITH ME -->
 <section id="persuasion">
   <h2>Why Work With Me</h2>
   <div class="principles">
@@ -376,12 +379,12 @@
     </div>
     <div class="principle">
       <h3>Social Proof</h3>
-      <p>Trusted by <strong>10+ startups and growing brands</strong> to craft human-centered design solutions.</p>
+      <p>Trusted by <strong>10+ startups and growing brands</strong> for human-centered design.</p>
     </div>
   </div>
 </section>
 
-<!-- Projects -->
+<!-- PROJECTS -->
 <section id="projects" class="projects">
   <a href="https://www.figma.com/make/N5yei6IsZYgO7TcbFUuKYx/Garden-Relaxation-Experience?node-id=0-1&t=qAliqofu4XlsGhqi-1" target="_blank" style="text-decoration:none; color:inherit;">
     <div class="card">
@@ -392,7 +395,7 @@
   </a>
 </section>
 
-<!-- Contact -->
+<!-- CONTACT -->
 <section id="contact">
   <h2>Contact Me</h2>
 
@@ -407,27 +410,19 @@
 
 </section>
 
+<!-- FOOTER -->
 <footer>
   © 2025 Natasha Caraos — Made with a clean, simple, everyman style
 </footer>
 
-<!-- Hamburger + Smooth Scroll Script -->
+<!-- Hamburger Script -->
 <script>
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
-  const links = document.querySelectorAll('.scroll-link');
 
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
     hamburger.classList.toggle('open');
-  });
-
-  // Smooth scroll + auto close mobile nav
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      hamburger.classList.remove('open');
-    });
   });
 </script>
 

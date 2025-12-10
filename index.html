@@ -8,6 +8,11 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
   <style>
+    /* NEW — Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -219,7 +224,7 @@
       }
     }
 
-    /* NEW Contact Section — Fully Fixed */
+    /* Contact Section */
     #contact {
       padding:60px 40px;
       background:white;
@@ -271,7 +276,6 @@
       background: #000;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 30px;
@@ -279,7 +283,7 @@
       font-size: 0.9rem;
     }
 
-    /* Mobile Styles for Hamburger */
+    /* Mobile Hamburger */
     @media (max-width: 768px) {
       .nav-links {
         position: absolute;
@@ -333,9 +337,9 @@
       <span></span>
     </div>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#persuasion">Why Work With Me</a></li>
-      <li><a href="#projects">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#persuasion" class="scroll-link">Why Work With Me</a></li>
+      <li><a href="#projects" class="scroll-link">Work</a></li>
+      <li><a href="#contact" class="scroll-link">Contact</a></li>
     </ul>
   </nav>
 </header>
@@ -377,7 +381,7 @@
   </div>
 </section>
 
-<!-- Projects Section -->
+<!-- Projects -->
 <section id="projects" class="projects">
   <a href="https://www.figma.com/make/N5yei6IsZYgO7TcbFUuKYx/Garden-Relaxation-Experience?node-id=0-1&t=qAliqofu4XlsGhqi-1" target="_blank" style="text-decoration:none; color:inherit;">
     <div class="card">
@@ -388,7 +392,7 @@
   </a>
 </section>
 
-<!-- Contact Section -->
+<!-- Contact -->
 <section id="contact">
   <h2>Contact Me</h2>
 
@@ -407,18 +411,27 @@
   © 2025 Natasha Caraos — Made with a clean, simple, everyman style
 </footer>
 
-<!-- Hamburger Script -->
+<!-- Hamburger + Smooth Scroll Script -->
 <script>
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
+  const links = document.querySelectorAll('.scroll-link');
 
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
     hamburger.classList.toggle('open');
   });
+
+  // Smooth scroll + auto close mobile nav
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('open');
+    });
+  });
 </script>
 
-<!-- Google Analytics Example -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GMPRPFSNLS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

@@ -23,9 +23,9 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: linear-gradient(180deg, #f4f8ff, #fafafa); /* A1 subtle gradient */
       color: #333;
-      overflow-x: hidden; /* FIX: NO MORE HORIZONTAL SCROLL */
+      overflow-x: hidden;
     }
 
     img {
@@ -34,14 +34,14 @@
     }
 
     /* ------------------------------------------------------------
-       HEADER (FLAT DESIGN + BLUE BAR + MOBILE MENU FIXES)
+       HEADER (FLAT DESIGN)
     ------------------------------------------------------------ */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 18px 40px;
-      background: #4a90e2; 
+      background: #4a90e2;
       color: white;
       position: sticky;
       top: 0;
@@ -78,7 +78,7 @@
       opacity: 0.7;
     }
 
-    /* Hamburger button */
+    /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -94,7 +94,6 @@
       transition: 0.3s;
     }
 
-    /* MOBILE MENU */
     @media (max-width: 768px) {
       .nav-links {
         position: absolute;
@@ -136,7 +135,7 @@
     .hero {
       padding: 80px 20px;
       text-align: center;
-      background: white;
+      background: transparent;
     }
 
     .hero-content {
@@ -176,32 +175,33 @@
     .hero-text p {
       font-size: 1.1rem;
       max-width: 600px;
-      color: #555;
+      color: #444;
     }
 
+    /* Gradient Button */
     .hero-button {
       margin-top: 20px;
       padding: 14px 26px;
-      background: #4a90e2;
+      background: linear-gradient(180deg, #4a90e2, #3d7cca);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 1rem;
       cursor: pointer;
       font-weight: 600;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
 
     .hero-button:hover {
-      background: #357ABD;
+      transform: translateY(-3px);
+      background: linear-gradient(180deg, #5aa0f4, #3974bb);
     }
 
     /* ------------------------------------------------------------
-       WHY WORK WITH ME
+       WHY WORK WITH ME (UNIFORM BOXES)
     ------------------------------------------------------------ */
     #persuasion {
       padding: 60px 40px;
-      background: #f9f9f9;
       text-align: center;
     }
 
@@ -223,6 +223,10 @@
       border-radius: 12px;
       width: 100%;
       max-width: 300px;
+      min-height: 200px; /* FIX: uniform height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
@@ -270,14 +274,14 @@
     ------------------------------------------------------------ */
     #contact {
       padding: 60px 40px;
-      background: white;
+      background: transparent;
     }
 
     .contact-container {
       max-width: 600px;
       margin: 40px auto;
       padding: 30px;
-      background: #f8f8f8;
+      background: white;
       border-radius: 12px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     }
@@ -290,6 +294,23 @@
       font-size: 15px;
       border: 2px solid #e0e0e0;
       border-radius: 6px;
+    }
+
+    .contact-container button {
+      width: 100%;
+      padding: 14px 0;
+      background: linear-gradient(180deg, #4a90e2, #3d7cca);
+      color: white;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .contact-container button:hover {
+      transform: translateY(-3px);
     }
 
     /* ------------------------------------------------------------
